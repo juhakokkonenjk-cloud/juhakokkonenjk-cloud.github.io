@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="fi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>Tesla-valtuutus</title>
+<style>body{font-family:system-ui,sans-serif;max-width:40rem;margin:2rem auto;padding:0 1rem}code{display:block;word-break:break-all;background:#eee;padding:.75rem;border-radius:6px}</style></head>
+<body><h1>Tesla-valtuutus</h1><div id="out">Ladataan…</div>
+<script>
+const p=new URLSearchParams(location.search),o=document.getElementById('out');
+function show(h){o.innerHTML=h}
+if(p.get('code')){show('<p>Valtuutus onnistui. Kopioi koko tämän sivun osoite (tai alla oleva koodi) ja anna se avustajalle. Koodi vanhenee muutamassa minuutissa.</p><p><b>code:</b></p><code id="c"></code><p><b>state:</b></p><code id="s"></code>');document.getElementById('c').textContent=p.get('code');document.getElementById('s').textContent=p.get('state')||'';}
+else if(p.get('error')){show('<p>Virhe:</p><code id="e"></code>');document.getElementById('e').textContent=p.get('error')+' '+(p.get('error_description')||'');}
+else show('<p>Ei valtuutuskoodia osoitteessa.</p>');
+</script></body></html>
